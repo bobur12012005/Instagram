@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="./CSS/media.css">
+    <title>Instagram</title>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <div class="logotype">
+                <img src="./logo/logo.svg" alt="logo">
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="oth_func">
+                <button id="home">
+                    <img src="./icons/home.svg" alt="home">
+                </button>
+                <button id="messages">
+                    <img src="./icons/messages.svg" alt="messages">
+                </button>
+                <button id="navigator">
+                    <img src="./icons/navigator.svg" alt="navigator">
+                </button>
+                <button id="notifications">
+                    <img src="./icons/notifications.svg" alt="notifications">
+                </button>
+                <button id="darkLight_mode">
+                    <img src="./icons/moon.svg" alt="mode">
+                </button>
+                <button id="avatar">
+                    <img src="./img/avatar.png" alt="avatar">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="leftSide-cont">
+            <div class="leftSide-top-all">
+                <button id="previous"><img src="./icons/prev.svg"></button>
+                <div class="leftSide-top"></div>
+                <button id="next"><img src="./icons/next.svg"></button>
+            </div>
+            <div class="leftSide-bottom"></div>
+        </div>
+        <div class="rightSide-cont">
+
+            <div class="insideUser">
+                <div class="mainUser">
+                    <div class="mainUser-left">
+                        <div class="mainUser-photo">
+                            <img src="./img/avatar.png">
+                        </div>
+                        <div class="mainUser-nickName_realName">
+                            <span class="nickName">m.bobur_official</span>
+                            <span class="realName">Bobur Makhamdkulov</span>
+                        </div>
+                    </div>
+                    <button class="mainUser-right">Switch</button>
+                </div>
+                <div class="othUsers">
+                    <div class="topOthUsers">
+                        <span class="suggestTxt">Suggestions For You</span>
+                        <span class="seeFollow">See All</span>
+                    </div>
+                    <div class="bottomOthUsers"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal">
+        <div id="content">
+            <img src="">
+        </div>
+    </div>
+
+    <script type="module" src="./JavaScript/index.js"></script>
+</body>
+
+</html>
