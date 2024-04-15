@@ -1,3 +1,4 @@
+// reloadStories
 export function reloadStories(arr, arr2, place) {
     place.innerHTML = ''
 
@@ -41,6 +42,7 @@ export function reloadStories(arr, arr2, place) {
 
 
 
+// reloadPosts
 export function reloadPosts(arr, arr2, arr3, place) {
     place.innerHTML = ''
 
@@ -248,7 +250,7 @@ export function reloadPosts(arr, arr2, arr3, place) {
             postModalMainPhoto.src = arr2[i].url
             postModalAva.src = arr2[i].url
             postModalNickname.innerHTML = user.username
-            
+
             postModal.onclick = (event) => {
                 if (event.target === postModal) {
                     postModal.style.display = 'none';
@@ -260,6 +262,7 @@ export function reloadPosts(arr, arr2, arr3, place) {
 
 
 
+// reloadSuggestions
 export function reloadSuggestion(arr, arr2, place) {
     place.innerHTML = ''
 
@@ -300,6 +303,58 @@ export function reloadSuggestion(arr, arr2, place) {
 
 
 
+// reloadComments
+export function reloadComments(arr, arr2, arr3, place) {
+    place.innerHTML = ''
+
+    for (let i = 0; i < arr.length; i++) {
+        let commentary = arr[i]
+        let user = arr2[i]
+        let image = arr3[i]
+
+        let comment = document.createElement('div')
+        let commentLeft = document.createElement('div')
+        let commentRightLikeBtn = document.createElement('button')
+        let commentLeftAva = document.createElement('img')
+        let commentLeftData = document.createElement('div')
+        let commentDataNick = document.createElement('span')
+        let commentDataText = document.createElement('p')
+        let commentRightLikeImg = document.createElement('img')
+
+        comment.classList.add('comment')
+        commentLeft.classList.add('commentLeft')
+        commentRightLikeBtn.classList.add('commentRightLikeBtn')
+        commentLeftAva.classList.add('commentLeftAva')
+        commentLeftData.classList.add('commentLeftData')
+
+        commentRightLikeImg.src = './icons/like.png'
+        commentLeftAva.src = image.url
+
+        commentDataNick.innerHTML = user.username
+        commentDataText.innerHTML = commentary.body
+
+        place.append(comment)
+        comment.append(commentLeft, commentRightLikeBtn)
+        commentLeft.append(commentLeftAva, commentLeftData)
+        commentLeftData.append(commentDataNick, commentDataText)
+        commentRightLikeBtn.append(commentRightLikeImg)
+
+        let isActivated = false
+        commentRightLikeImg.onclick = () => {
+            if (isActivated === false) {
+                commentRightLikeImg.src = './icons/likeFull.png'
+                isActivated = true
+            } else {
+                commentRightLikeImg.src = './icons/like.png'
+                isActivated = false
+            }
+        }
+    }
+}
+
+
+
+// other functions
 let bgColorMode = document.querySelector('#darkLight_mode')
 let body = document.body
 let logotype = document.querySelector('.logotype img')
@@ -327,4 +382,23 @@ bgColorMode.onclick = () => {
         notifications.src = './Icons/notifications.svg'
         darkLight_mode.src = './Icons/moon.svg'
     }
+}
+
+
+let storiesCont = document.querySelector('.leftSide-cont .leftSide-top')
+let nextButton = document.querySelector('#next')
+let prevButton = document.querySelector('#previous')
+
+nextButton.onclick = () => {
+    storiesCont.scrollTo({
+        left: storiesCont.scrollLeft + 400,
+        behavior: 'smooth'
+    })
+}
+
+prevButton.onclick = () => {
+    storiesCont.scrollTo({
+        left: storiesCont.scrollLeft - 400,
+        behavior: 'smooth'
+    })
 }

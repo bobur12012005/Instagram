@@ -589,71 +589,6 @@ body {
     }
 }
 
-.darkMode {
-    color: white;
-    background: #0f0f0f;
-
-    header {
-        background: #000000;
-        border-bottom: 1px solid #3F3F3F;
-
-        .head {
-            .search {
-                input {
-                    background: #262626;
-                    border: 1px solid #3F3F3F;
-                    color: white;
-
-                    &::placeholder {
-                        color: #9C9C9C;
-                    }
-                }
-            }
-        }
-    }
-
-    .main-container {
-        .leftSide-cont {
-            .leftSide-top-all {
-                .leftSide-top {
-                    background: #000000;
-                    border: 1px solid #3F3F3F;
-                }
-            }
-
-            .leftSide-bottom {
-                .post {
-                    border: 1px solid #3F3F3F;
-                    background: #000000;
-
-                    .postBot {
-                        .addComment {
-                            border-top: 1px solid #3F3F3F;
-
-                            input {
-                                background: #000000;
-                                color: white;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .rightSide-cont {
-            .insideUser {
-                .othUsers {
-                    .topOthUsers {
-                        .seeFollow {
-                            color: white;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 #modal {
     position: fixed;
     top: 0;
@@ -778,6 +713,56 @@ body {
                 gap: 10px;
                 font-size: 14px;
                 line-height: 17px;
+
+                .comment {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .commentLeft {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        width: 90%;
+
+                        .commentLeftAva {
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 100%;
+                        }
+
+                        .commentLeftData {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 5px;
+
+                            span {
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+
+                            p {
+                                font-size: 14px;
+                                font-weight: 400;
+                                color: #808080;
+                            }
+                        }
+                    }
+
+                    .commentRightLikeBtn {
+                        background: none;
+                        border: none;
+                        width: 12px;
+                        height: 12px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
             }
 
             .content-settings {
@@ -891,6 +876,91 @@ body {
                     font-size: 14px;
                     font-weight: 700;
                     color: #0095F6;
+                }
+            }
+        }
+    }
+}
+
+.darkMode {
+    color: white;
+    background: #0f0f0f;
+
+    header {
+        background: #000000;
+        border-bottom: 1px solid #3F3F3F;
+
+        .head {
+            .search {
+                input {
+                    background: #262626;
+                    border: 1px solid #3F3F3F;
+                    color: white;
+
+                    &::placeholder {
+                        color: #9C9C9C;
+                    }
+                }
+            }
+        }
+    }
+
+    .main-container {
+        .leftSide-cont {
+            .leftSide-top-all {
+                .leftSide-top {
+                    background: #000000;
+                    border: 1px solid #3F3F3F;
+                }
+            }
+
+            .leftSide-bottom {
+                .post {
+                    border: 1px solid #3F3F3F;
+                    background: #000000;
+
+                    .postBot {
+                        .addComment {
+                            border-top: 1px solid #3F3F3F;
+
+                            input {
+                                background: #000000;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .rightSide-cont {
+            .insideUser {
+                .othUsers {
+                    .topOthUsers {
+                        .seeFollow {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #postModal {
+        #postContent {
+            background: #000000;
+            color: white;
+
+            .content-right {
+                .content-comments {
+                    background: #0f0f0f;
+                }
+            }
+
+            .content-addComment {
+                input {
+                    background: black;
+                    color: white;
                 }
             }
         }

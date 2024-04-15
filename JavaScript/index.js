@@ -1,10 +1,12 @@
 import { reloadStories } from "./ui.js"
 import { reloadPosts } from "./ui.js"
 import { reloadSuggestion } from "./ui.js"
+import { reloadComments } from "./ui.js"
 
 let storiesCont = document.querySelector('.leftSide-cont .leftSide-top')
 let postsCont = document.querySelector('.leftSide-cont .leftSide-bottom')
-let suggestionCont = document.querySelector('.othUsers .bottomOthUsers')
+let suggestionsCont = document.querySelector('.othUsers .bottomOthUsers')
+let commentsCont = document.querySelector('.content-right .content-comments')
 
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
@@ -17,24 +19,8 @@ fetch('https://jsonplaceholder.typicode.com/users')
                     .then(comments => {
                         reloadStories(users, photos.slice(0, 10), storiesCont)
                         reloadPosts(users, photos.slice(0, 10), comments.slice(0, 10), postsCont)
-                        reloadSuggestion(users.slice(0, 5), photos.slice(0, 5), suggestionCont)
+                        reloadSuggestion(users.slice(0, 5), photos.slice(0, 5), suggestionsCont)
+                        reloadComments(comments.slice(0, 10), users.slice(0, 10), photos.slice(0, 10), commentsCont)
                     })
             })
     })
-
-let nextButton = document.getElementById('next')
-let prevButton = document.getElementById('previous')
-
-nextButton.onclick = () => {
-    storiesCont.scrollTo({
-        left: storiesCont.scrollLeft + 400,
-        behavior: 'smooth'
-    })
-}
-
-prevButton.onclick = () => {
-    storiesCont.scrollTo({
-        left: storiesCont.scrollLeft - 400,
-        behavior: 'smooth'
-    })
-}
