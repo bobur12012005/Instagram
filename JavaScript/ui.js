@@ -363,6 +363,8 @@ let messages = document.querySelector('#messages img')
 let navigator = document.querySelector('#navigator img')
 let notifications = document.querySelector('#notifications img')
 let darkLight_mode = document.querySelector('#darkLight_mode img')
+let previousImg = document.querySelector('#previous img')
+let nextImg = document.querySelector('#next img')
 
 bgColorMode.onclick = () => {
     if (!body.classList.contains('darkMode')) {
@@ -373,6 +375,8 @@ bgColorMode.onclick = () => {
         navigator.src = './IconsLight/navigator.svg'
         notifications.src = './IconsLight/notifications.svg'
         darkLight_mode.src = './IconsLight/sun.svg'
+        previousImg.src = './icons/previous.png'
+        nextImg.src = './icons/next.png'
     } else {
         body.classList.remove('darkMode')
         logotype.src = './logo/logo.svg'
@@ -381,8 +385,11 @@ bgColorMode.onclick = () => {
         navigator.src = './Icons/navigator.svg'
         notifications.src = './Icons/notifications.svg'
         darkLight_mode.src = './Icons/moon.svg'
+        previousImg.src = './iconsLight/previous.png'
+        nextImg.src = './iconsLight/next.png'
     }
 }
+
 
 
 let storiesCont = document.querySelector('.leftSide-cont .leftSide-top')
