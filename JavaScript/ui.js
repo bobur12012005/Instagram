@@ -119,13 +119,13 @@ export function reloadPosts(arr, arr2, arr3, place) {
         postSaveImg.classList.add('postSaveImg')
 
         postOptImg.src = './icons/dots.svg'
-        postLikeImg.src = './icons/like.svg'
-        postCommentImg.src = './icons/comment.svg'
-        postSendImg.src = './icons/send.svg'
+        postLikeImg.src = './icons/like.png'
+        postCommentImg.src = './icons/comment.png'
+        postSendImg.src = './icons/send.png'
         postSaveImg.src = './icons/save.svg'
-        postCommentLikeImg1.src = './icons/like.svg'
-        postCommentLikeImg2.src = './icons/like.svg'
-        postSmileImg.src = './icons/smile.svg'
+        postCommentLikeImg1.src = './icons/like.png'
+        postCommentLikeImg2.src = './icons/like.png'
+        postSmileImg.src = './icons/smile.png'
         postAvaImg.src = arr2[i].url
         postMidImg.src = arr2[i].url
 
@@ -170,32 +170,90 @@ export function reloadPosts(arr, arr2, arr3, place) {
         postAddComment.append(postSmile, postCommentInput, postingTheComment)
         postSmile.append(postSmileImg)
 
-        let active = false
-
+        let active1 = false
         postBotSave.onclick = () => {
-            if (active === false) {
+            if (active1 === false) {
                 postSaveImg.src = './icons/saveFull.svg'
-                active = true
+                active1 = true
             } else {
                 postSaveImg.src = './icons/save.svg'
-                active = false
+                active1 = false
             }
         }
 
         let active2 = false
-
         postBotLike.onclick = () => {
             if (active2 === false) {
-                postLikeImg.src = './icons/likeFilled.png'
+                postLikeImg.src = './icons/likeFull.png'
                 active2 = true
             } else {
-                postLikeImg.src = './icons/like.svg'
+                postLikeImg.src = './icons/like.png'
                 active2 = false
             }
         }
 
-        post.onclick = () => {
+        let active3 = false
+        postCommentLikeImg1.onclick = () => {
+            if (active3 === false) {
+                postCommentLikeImg1.src = './icons/likeFull.png'
+                active3 = true
+            } else {
+                postCommentLikeImg1.src = './icons/like.png'
+                active3 = false
+            }
+        }
+
+        let active4 = false
+        postCommentLikeImg2.onclick = () => {
+            if (active4 === false) {
+                postCommentLikeImg2.src = './icons/likeFull.png'
+                active4 = true
+            } else {
+                postCommentLikeImg2.src = './icons/like.png'
+                active4 = false
+            }
+        }
+
+        let postModal = document.querySelector('#postModal')
+        let postModalMainPhoto = document.querySelector('.content-left img')
+        let postModalAva = document.querySelector('.content-imgNick img')
+        let postModalNickname = document.querySelector('.content-imgNick span')
+        let postModalLike = document.querySelector('.content-leftActions #content-like img')
+        let postModalSave = document.querySelector('.content-rightActions #content-save img')
+
+        let active5 = false
+        postModalLike.onclick = () => {
+            if (active5 === false) {
+                postModalLike.src = './icons/likeFull.png'
+                active5 = true
+            } else {
+                postModalLike.src = './icons/like.png'
+                active5 = false
+            }
+        }
+
+        let active6 = false
+        postModalSave.onclick = () => {
+            if (active6 === false) {
+                postModalSave.src = './icons/saveFull.svg'
+                active6 = true
+            } else {
+                postModalSave.src = './icons/save.svg'
+                active6 = false
+            }
+        }
+
+        postMid.onclick = () => {
+            postModal.style.display = 'flex'
+            postModalMainPhoto.src = arr2[i].url
+            postModalAva.src = arr2[i].url
+            postModalNickname.innerHTML = user.username
             
+            postModal.onclick = (event) => {
+                if (event.target === postModal) {
+                    postModal.style.display = 'none';
+                }
+            }
         }
     }
 }
