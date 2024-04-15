@@ -193,6 +193,10 @@ export function reloadPosts(arr, arr2, arr3, place) {
                 active2 = false
             }
         }
+
+        post.onclick = () => {
+            
+        }
     }
 }
 
