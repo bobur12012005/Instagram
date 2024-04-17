@@ -303,6 +303,7 @@ export function reloadSuggestion(arr, arr2, place) {
 
 
 
+let chosenComments = []
 // reloadComments
 export function reloadComments(arr, arr2, arr3, place) {
     place.innerHTML = ''
@@ -331,7 +332,6 @@ export function reloadComments(arr, arr2, arr3, place) {
         commentLeftAva.src = image.url
 
         commentDataNick.innerHTML = user.username
-        commentDataText.innerHTML = commentary.body
 
         place.append(comment)
         comment.append(commentLeft, commentRightLikeBtn)
@@ -349,9 +349,17 @@ export function reloadComments(arr, arr2, arr3, place) {
                 isActivated = false
             }
         }
+        
+        arr3.forEach(img => {
+            arr.forEach(comment => {
+                if (img.id === comment.postId) {
+                    chosenComments.push(comment.body)
+                }
+            })
+        })
+        chosenComments.forEach(comment => commentDataText.innerHTML = comment)
     }
 }
-
 
 
 // other functions
