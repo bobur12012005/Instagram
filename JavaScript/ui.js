@@ -48,6 +48,8 @@ export function reloadPosts(arr, arr2, arr3, place) {
 
     for (let i = 0; i < arr.length; i++) {
         let user = arr[i]
+        let image = arr2[i]
+        let commentary = arr3[i]
 
         let post = document.createElement('div')
         let postTop = document.createElement('div')
@@ -128,21 +130,21 @@ export function reloadPosts(arr, arr2, arr3, place) {
         postCommentLikeImg1.src = './icons/like.png'
         postCommentLikeImg2.src = './icons/like.png'
         postSmileImg.src = './icons/smile.png'
-        postAvaImg.src = arr2[i].url
-        postMidImg.src = arr2[i].url
+        postAvaImg.src = image.url
+        postMidImg.src = image.url
 
-        if (arr3[i].body.length > 70) {
-            postcomment2.innerHTML = arr3[i].body.slice(0, 70) + `<b style = "color:#b6b6b6; cursor:pointer;">...more </b>`
+        if (commentary.body.length > 70) {
+            postcomment2.innerHTML = commentary.body.slice(0, 70) + `<b style = "color:#b6b6b6; cursor:pointer;">...more </b>`
         } else {
-            postcomment2.innerHTML = arr3[i].body
+            postcomment2.innerHTML = commentary.body
         }
 
         postCommentInput.placeholder = 'Add a comment...'
         postlikeCounter.innerHTML = '9,999 likes'
         postSeeAllCom.innerHTML = 'View all comments...'
         postingTheComment.innerHTML = 'Post'
-        postcomment1.innerHTML = arr3[i].name
-        postDescriptionTxt.innerHTML = arr2[i].title
+        postcomment1.innerHTML = commentary.name
+        postDescriptionTxt.innerHTML = image.title
         postNick.innerHTML = user.username
         postCountry.innerHTML = user.address.city
         postDescriptionNick.innerHTML = user.username
@@ -247,13 +249,19 @@ export function reloadPosts(arr, arr2, arr3, place) {
 
         postMid.onclick = () => {
             postModal.style.display = 'flex'
-            postModalMainPhoto.src = arr2[i].url
-            postModalAva.src = arr2[i].url
+            postModalMainPhoto.src = image.url
+            postModalAva.src = image.url
             postModalNickname.innerHTML = user.username
+
+            fetch("https://jsonplaceholder.typicode.com/comments?postId=" + commentary.id)
+                .then(res => res.json())
+                .then(commentaries => {
+                    reloadComments(commentaries, arr2, arr, document.querySelector('.content-comments'))
+                })
 
             postModal.onclick = (event) => {
                 if (event.target === postModal) {
-                    postModal.style.display = 'none';
+                    postModal.style.display = 'none'
                 }
             }
         }
@@ -303,15 +311,14 @@ export function reloadSuggestion(arr, arr2, place) {
 
 
 
-let chosenComments = []
 // reloadComments
 export function reloadComments(arr, arr2, arr3, place) {
     place.innerHTML = ''
 
     for (let i = 0; i < arr.length; i++) {
         let commentary = arr[i]
-        let user = arr2[i]
-        let image = arr3[i]
+        let image = arr2[i]
+        let user = arr3[i]
 
         let comment = document.createElement('div')
         let commentLeft = document.createElement('div')
@@ -322,7 +329,7 @@ export function reloadComments(arr, arr2, arr3, place) {
         let commentDataText = document.createElement('p')
         let commentRightLikeImg = document.createElement('img')
 
-        comment.classList.add('comment')
+        comment.classList.add('commentary')
         commentLeft.classList.add('commentLeft')
         commentRightLikeBtn.classList.add('commentRightLikeBtn')
         commentLeftAva.classList.add('commentLeftAva')
@@ -332,6 +339,7 @@ export function reloadComments(arr, arr2, arr3, place) {
         commentLeftAva.src = image.url
 
         commentDataNick.innerHTML = user.username
+        commentDataText.innerHTML = commentary.body
 
         place.append(comment)
         comment.append(commentLeft, commentRightLikeBtn)
@@ -349,15 +357,8 @@ export function reloadComments(arr, arr2, arr3, place) {
                 isActivated = false
             }
         }
+
         
-        arr3.forEach(img => {
-            arr.forEach(comment => {
-                if (img.id === comment.postId) {
-                    chosenComments.push(comment.body)
-                }
-            })
-        })
-        chosenComments.forEach(comment => commentDataText.innerHTML = comment)
     }
 }
 

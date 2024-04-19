@@ -1,7 +1,6 @@
 import { reloadStories } from "./ui.js"
 import { reloadPosts } from "./ui.js"
 import { reloadSuggestion } from "./ui.js"
-import { reloadComments } from "./ui.js"
 
 let storiesCont = document.querySelector('.leftSide-cont .leftSide-top')
 let postsCont = document.querySelector('.leftSide-cont .leftSide-bottom')
@@ -20,7 +19,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
                         reloadStories(users, photos.slice(0, 10), storiesCont)
                         reloadPosts(users, photos.slice(0, 10), comments.slice(0, 10), postsCont)
                         reloadSuggestion(users.slice(0, 5), photos.slice(0, 5), suggestionsCont)
-                        reloadComments(comments, users.slice(0, 10), photos.slice(0, 10), commentsCont)
                     })
             })
     })
