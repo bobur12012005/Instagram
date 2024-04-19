@@ -232,9 +232,11 @@ export function reloadPosts(arr, arr2, arr3, place) {
             if (active5 === false) {
                 postModalLike.src = './icons/likeFull.png'
                 active5 = true
+                document.querySelector('.content-data span').innerHTML = "Liked by 10,000 people"
             } else {
                 postModalLike.src = './icons/like.png'
                 active5 = false
+                document.querySelector('.content-data span').innerHTML = "Liked by 9,999 people"
             }
         }
 
