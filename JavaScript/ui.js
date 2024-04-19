@@ -190,9 +190,11 @@ export function reloadPosts(arr, arr2, arr3, place) {
             if (active2 === false) {
                 postLikeImg.src = './icons/likeFull.png'
                 active2 = true
+                postlikeCounter.innerHTML = '10,000 likes'
             } else {
                 postLikeImg.src = './icons/like.png'
                 active2 = false
+                postlikeCounter.innerHTML = '9,999 likes'
             }
         }
 
@@ -247,7 +249,7 @@ export function reloadPosts(arr, arr2, arr3, place) {
             }
         }
 
-        postMid.onclick = () => {
+        postBotComment.onclick = () => {
             postModal.style.display = 'flex'
             postModalMainPhoto.src = image.url
             postModalAva.src = image.url
@@ -357,10 +359,9 @@ export function reloadComments(arr, arr2, arr3, place) {
                 isActivated = false
             }
         }
-
-        
     }
 }
+
 
 
 // other functions
@@ -394,8 +395,8 @@ bgColorMode.onclick = () => {
         navigator.src = './Icons/navigator.svg'
         notifications.src = './Icons/notifications.svg'
         darkLight_mode.src = './Icons/moon.svg'
-        previousImg.src = './iconsLight/previous.png'
-        nextImg.src = './iconsLight/next.png'
+        previousImg.src = './IconsLight/previous.png'
+        nextImg.src = './IconsLight/next.png'
     }
 }
 

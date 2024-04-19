@@ -5,7 +5,6 @@ import { reloadSuggestion } from "./ui.js"
 let storiesCont = document.querySelector('.leftSide-cont .leftSide-top')
 let postsCont = document.querySelector('.leftSide-cont .leftSide-bottom')
 let suggestionsCont = document.querySelector('.othUsers .bottomOthUsers')
-let commentsCont = document.querySelector('.content-right .content-comments')
 
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
